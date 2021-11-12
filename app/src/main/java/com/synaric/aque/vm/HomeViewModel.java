@@ -3,8 +3,9 @@ package com.synaric.aque.vm;
 import com.kunminx.binding_recyclerview.adapter.BaseDataBindingAdapter;
 import com.synaric.aque.data.entity.Note;
 import com.synaric.aque.data.repo.NoteRepository;
-import com.synaric.architecture.utils.ToastUtils;
+import com.synaric.architecture.utils.PagingUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,10 +21,12 @@ public class HomeViewModel extends ViewModel {
 
     public final MutableLiveData<List<Note>> noteList = new MutableLiveData<>();
 
+    private final PagingUtils.PagingModel noteListPaging = new PagingUtils.PagingModel(10);
+
     public void getAllNote() {
         noteRepository.queryAll(dataResult -> {
-            noteList.setValue(dataResult.getResult());
-        });
+            noteListPaging.fetch(noteList, dataResult.getResult());
+        }, noteListPaging.page, noteListPaging.length);
     }
 
     public class ClickProxy {

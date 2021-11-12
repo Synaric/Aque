@@ -36,7 +36,7 @@ public class NoteRepository extends BaseRepository {
         }, result);
     }
 
-    public void queryAll(DataResult.Result<List<Note>> result) {
-        execute(() -> AppDatabase.getInstance().noteDao().queryAll(), result);
+    public void queryAll(DataResult.Result<List<Note>> result, int page, int length) {
+        execute(() -> AppDatabase.getInstance().noteDao().queryAll(page, length), result);
     }
 }

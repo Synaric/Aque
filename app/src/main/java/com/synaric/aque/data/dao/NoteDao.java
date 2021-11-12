@@ -17,6 +17,6 @@ public interface NoteDao {
     @Insert
     void insert(Note note);
 
-    @Query("select * from note order by createTime desc")
-    List<Note> queryAll();
+    @Query("select * from note order by createTime desc limit :page * :length, :length")
+    List<Note> queryAll(int page, int length);
 }
