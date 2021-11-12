@@ -1,5 +1,6 @@
 package com.synaric.aque.vm;
 
+import com.kunminx.binding_recyclerview.adapter.BaseDataBindingAdapter;
 import com.synaric.aque.data.entity.Note;
 import com.synaric.aque.data.repo.NoteRepository;
 import com.synaric.architecture.utils.ToastUtils;
@@ -43,11 +44,17 @@ public class HomeViewModel extends ViewModel {
 
             }, note);
         }
+    }
 
-        public void getAllNote() {
-            noteRepository.queryAll((r) -> {
-                ToastUtils.showShortToast(r.getResult().get(0).toString());
-            });
+    public class OnNoteListItemClick implements BaseDataBindingAdapter.OnItemClickListener<Note> {
+
+        @Override
+        public void onItemClick(int viewId, Note item, int position) {
+            List<Note> noteListValue = noteList.getValue();
+            if (noteListValue != null) {
+                item.content = item.content + "~";
+                noteList.setValue(noteList.getValue());
+            }
         }
     }
 }

@@ -17,6 +17,6 @@ public interface NoteDao {
     @Insert
     void insert(Note note);
 
-    @Query("select * from note")
+    @Query("select * from note order by createTime desc")
     List<Note> queryAll();
 }

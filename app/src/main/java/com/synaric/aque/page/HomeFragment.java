@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.kunminx.architecture.ui.page.DataBindingConfig;
+import com.kunminx.binding_recyclerview.adapter.BaseDataBindingAdapter;
 import com.synaric.aque.BR;
 import com.synaric.aque.R;
 import com.synaric.aque.data.entity.Note;
@@ -34,6 +35,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         adapter = new NoteListAAdapter(getContext());
+        adapter.setOnItemClickListener(state.new OnNoteListItemClick());
         return new DataBindingConfig(R.layout.fragment_home, BR.vm, state)
                 .addBindingParam(BR.click, state.new ClickProxy())
                 .addBindingParam(BR.adapter, adapter);
