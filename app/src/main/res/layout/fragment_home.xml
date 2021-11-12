@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="RtlSymmetry">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.synaric.aque.vm.HomeViewModel" />
+
+        <variable
+            name="click"
+            type="com.synaric.aque.vm.HomeViewModel.ClickProxy" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_hello"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hello World"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="click me"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_hello" android:onClick="@{() -> click.getAllNote()}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
