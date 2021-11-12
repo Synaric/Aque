@@ -62,4 +62,7 @@ dependencies {
     // 列表展示、列表适配器
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "com.kunminx.arch:binding-recyclerview:3.9.0-beta1"
+
+    // 事件总线
+    implementation 'io.github.jeremyliao:live-event-bus-x:1.8.0'
 }
