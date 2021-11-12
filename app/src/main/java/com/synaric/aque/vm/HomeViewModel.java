@@ -28,15 +28,19 @@ public class HomeViewModel extends ViewModel {
     public class ClickProxy {
 
         public void saveNote() {
-            ToastUtils.showShortToast("saveNote");
             Note note = new Note();
             note.title = "标题";
-            note.content = "内容";
+            note.content = "内容" + (noteList.getValue() != null ? noteList.getValue().size() : "0");
             note.category = "未分类";
             note.createTime = new Date().getTime();
             note.updateTime = note.createTime;
             noteRepository.insertNote((r) -> {
-                ToastUtils.showShortToast("saveNote success");
+                List<Note> noteListValue = HomeViewModel.this.noteList.getValue();
+                if (noteListValue != null) {
+                    noteListValue.add(0, note);
+                    noteList.setValue(noteListValue);
+                }
+
             }, note);
         }
 
