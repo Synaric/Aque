@@ -19,6 +19,8 @@ public class Note {
 
     public String category;
 
+    public String coverUrl;
+
     public Long createTime;
 
     public Long updateTime;
@@ -31,6 +33,7 @@ public class Note {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", category='" + category + '\'' +
+                ", coverUrl='" + coverUrl + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';
