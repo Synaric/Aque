@@ -1,11 +1,14 @@
 package com.synaric.architecture.utils;
 
+import com.synaric.architecture.livedata.PagingLiveData;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
 
 /**
+ * 维护分页状态工具类。
  * Created by Synaric at 2021/11/12 0012.
  */
 public class PagingUtils {
@@ -22,7 +25,7 @@ public class PagingUtils {
             this.length = length;
         }
 
-        public <T> void fetch(MutableLiveData<List<T>> list, List<T> result, boolean isRefresh) {
+        public <T> void fetch(PagingLiveData<List<T>> list, List<T> result, boolean isRefresh) {
             if (isRefresh) {
                 page = 0;
                 isLast = false;
@@ -40,10 +43,10 @@ public class PagingUtils {
             dataList.addAll(result);
             isLast = result.size() < length;
             page++;
-            list.setValue(dataList);
+            list.setValue(dataList, PagingLiveData.NotifyDataSetChangedInfo.ofInsertRange((page - 1) * length, length));
         }
 
-        public <T> void fetch(MutableLiveData<List<T>> list, List<T> result) {
+        public <T> void fetch(PagingLiveData<List<T>> list, List<T> result) {
             fetch(list, result, false);
         }
     }

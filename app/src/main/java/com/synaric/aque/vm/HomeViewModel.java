@@ -3,13 +3,12 @@ package com.synaric.aque.vm;
 import com.kunminx.binding_recyclerview.adapter.BaseDataBindingAdapter;
 import com.synaric.aque.data.entity.Note;
 import com.synaric.aque.data.repo.NoteRepository;
+import com.synaric.architecture.livedata.PagingLiveData;
 import com.synaric.architecture.utils.PagingUtils;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 /**
@@ -19,7 +18,7 @@ public class HomeViewModel extends ViewModel {
 
     private final NoteRepository noteRepository = NoteRepository.getInstance();
 
-    public final MutableLiveData<List<Note>> noteList = new MutableLiveData<>();
+    public final PagingLiveData<List<Note>> noteList = new PagingLiveData<>();
 
     private final PagingUtils.PagingModel noteListPaging = new PagingUtils.PagingModel(10);
 
@@ -42,7 +41,7 @@ public class HomeViewModel extends ViewModel {
                 List<Note> noteListValue = HomeViewModel.this.noteList.getValue();
                 if (noteListValue != null) {
                     noteListValue.add(0, note);
-                    noteList.setValue(noteListValue);
+                    noteList.setValue(noteListValue, PagingLiveData.NotifyDataSetChangedInfo.ofInsert(0));
                 }
 
             }, note);
@@ -56,7 +55,7 @@ public class HomeViewModel extends ViewModel {
             List<Note> noteListValue = noteList.getValue();
             if (noteListValue != null) {
                 item.content = item.content + "~";
-                noteList.setValue(noteList.getValue());
+                noteList.setValue(noteList.getValue(), PagingLiveData.NotifyDataSetChangedInfo.ofUpdate(position));
             }
         }
     }
