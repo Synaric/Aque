@@ -8,8 +8,9 @@ buildscript {
         lifecycleVersion = "2.4.0"
         navigationVersion = "2.3.5"
         retrofitVersion = "2.9.0"
-        okHttpVersion = "4.9.2"
+        okHttpVersion = "4.9.3"
         roomVersion = "2.3.0"
+        kotlinVersion = "1.5.20"
     }
 
     repositories {
@@ -19,6 +20,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.3"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
