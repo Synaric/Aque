@@ -1,6 +1,9 @@
 package com.synaric.aque.test
 
-class KotlinPlay {
+/**
+ * 第三章——函数的定义与调用
+ */
+class Functions {
 
     fun testFor() {
         (1..5).forEach { i ->

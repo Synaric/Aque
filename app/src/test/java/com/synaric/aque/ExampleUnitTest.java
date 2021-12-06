@@ -1,6 +1,7 @@
 package com.synaric.aque;
 
-import com.synaric.aque.test.KotlinPlay;
+
+import com.synaric.aque.test.ClassAndInterface;
 
 import org.junit.Test;
 
@@ -14,8 +15,8 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
-        KotlinPlay kotlinPlay = new KotlinPlay();
-        kotlinPlay.testFor();
+        ClassAndInterface classAndInterface = new ClassAndInterface();
+        classAndInterface.equalTest();
         assertEquals(4, 2 + 2);
     }
 }
