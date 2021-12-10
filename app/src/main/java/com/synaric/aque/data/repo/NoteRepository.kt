@@ -12,11 +12,11 @@ import kotlinx.coroutines.withContext
  */
 class NoteRepository private constructor() : BaseRepository() {
 
-    suspend fun insertNote(note: Note) = withContext(Dispatchers.IO) {
+    suspend fun insertNote(note: Note): Long = executeSQL {
         AppDatabase.INSTANCE.noteDao().insert(note)
     }
 
-    suspend fun queryAll(page: Int, length: Int): List<Note> = withContext(Dispatchers.IO) {
+    suspend fun queryAll(page: Int, length: Int): MutableList<Note>  = executeSQL {
         AppDatabase.INSTANCE.noteDao().queryAll(page, length)
     }
 

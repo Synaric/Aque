@@ -46,9 +46,9 @@ dependencies {
     api "androidx.navigation:navigation-runtime:$navigationVersion"
 
     // Room
-    implementation("androidx.room:room-runtime:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
 
     api 'com.kunminx.arch:unpeek-livedata:7.2.0-beta1'
     api 'com.kunminx.arch:smooth-navigation:4.0.0-beta1'
