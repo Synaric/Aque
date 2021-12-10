@@ -1,6 +1,9 @@
 package com.synaric.aque.test
 
 import java.lang.RuntimeException
+import java.lang.reflect.InvocationHandler
+import java.lang.reflect.Method
+import java.lang.reflect.Proxy
 
 /**
  * 第六章——TypeSystem
@@ -80,5 +83,29 @@ class TypeSystem {
      */
     fun fail(): Nothing {
         throw RuntimeException()
+    }
+
+    interface Game {
+
+        fun play(name: String)
+    }
+
+    class AGame: Game {
+        override fun play(name: String) {
+            println("AGame.play")
+        }
+    }
+
+    fun testProxy() {
+        val game = AGame()
+        val newProxyInstance: Game = Proxy.newProxyInstance(
+            game.javaClass.classLoader,
+            arrayOf(Game::class.java)
+        ) { any: Any, method: Method, arrayOfAnys: Array<Any> ->
+//            println(any)
+            method.invoke(game, *arrayOfAnys)
+        } as Game
+
+        newProxyInstance.play("hi")
     }
 }

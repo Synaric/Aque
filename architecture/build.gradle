@@ -1,5 +1,8 @@
 plugins {
     id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -13,6 +16,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
     }
 
     buildTypes {
@@ -37,10 +41,14 @@ dependencies {
 
     api "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
     api "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
-    api "androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     api "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
     api "androidx.navigation:navigation-runtime:$navigationVersion"
-    api "androidx.room:room-runtime:$roomVersion"
+
+    // Room
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 
     api 'com.kunminx.arch:unpeek-livedata:7.2.0-beta1'
     api 'com.kunminx.arch:smooth-navigation:4.0.0-beta1'
@@ -55,4 +63,11 @@ dependencies {
 
     api 'io.reactivex.rxjava3:rxandroid:3.0.0'
     api 'io.reactivex.rxjava3:rxjava:3.0.0'
+
+    // 协程
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+
+    // Android KTX
+    api "androidx.core:core-ktx:1.7.0"
 }

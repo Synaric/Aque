@@ -67,11 +67,12 @@ dependencies {
     // Kotlin支持
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
 
-    // 数据库管理
-    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+    // Room
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+
 
     // 列表展示、列表适配器
     implementation "androidx.recyclerview:recyclerview:1.2.1"

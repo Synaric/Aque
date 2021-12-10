@@ -1,41 +1,26 @@
-package com.synaric.aque.data.entity;
+package com.synaric.aque.data.entity
 
-import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 /**
  * Created by Synaric at 2021/11/10 0010.
  */
-@Entity
-public class Note {
+@Entity(tableName = "note")
+class Note {
 
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    var id = 0
 
-    public String title;
+    var title: String? = null
 
-    public String content;
+    var content: String? = null
 
-    public String category;
+    var category: String? = null
 
-    public String coverUrl;
+    var coverUrl: String? = null
 
-    public Long createTime;
+    var createTime: Long? = null
 
-    public Long updateTime;
-
-    @NonNull
-    @Override
-    public String toString() {
-        return "Note{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", category='" + category + '\'' +
-                ", coverUrl='" + coverUrl + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                '}';
-    }
+    var updateTime: Long? = null
 }
