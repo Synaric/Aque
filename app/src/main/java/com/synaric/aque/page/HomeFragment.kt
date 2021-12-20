@@ -25,7 +25,7 @@ class HomeFragment : BaseFragment() {
         adapter = NoteListAAdapter(context)
         adapter.setOnItemClickListener(state.OnNoteListItemClick())
         return DataBindingConfig(R.layout.fragment_home, BR.vm, state)
-            .addBindingParam(BR.click, state.ClickProxy())
+            .addBindingParam(BR.click, ClickProxy())
             .addBindingParam(BR.adapter, adapter)
     }
 
@@ -39,5 +39,12 @@ class HomeFragment : BaseFragment() {
         state.noteList.observe(
             viewLifecycleOwner,
             { state.noteList.notifyDataSetChanged(adapter) })
+    }
+
+    inner class ClickProxy {
+        fun saveNote() {
+//            state.saveNote()
+            nav().navigate(R.id.action_fragment_home_to_fragment_note_detail)
+        }
     }
 }

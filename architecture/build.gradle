@@ -43,7 +43,7 @@ dependencies {
     api "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     api "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
-    api "androidx.navigation:navigation-runtime:$navigationVersion"
+    api "androidx.navigation:navigation-runtime-ktx:$navigationVersion"
 
     // Room
     implementation "androidx.room:room-runtime:$roomVersion"

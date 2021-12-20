@@ -12,7 +12,7 @@
 
         <variable
             name="click"
-            type="com.synaric.aque.vm.HomeViewModel.ClickProxy" />
+            type="com.synaric.aque.page.HomeFragment.ClickProxy" />
 
         <variable
             name="adapter"

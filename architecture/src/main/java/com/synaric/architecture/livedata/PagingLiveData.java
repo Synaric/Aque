@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.ListAdapter;
 
 public class PagingLiveData<List> extends MutableLiveData<List> {
 
+    /**
+     * 标识一次数据列表更新的类型。
+     */
     public static class NotifyDataSetChangedInfo {
         public static final int DEFAULT = -1;
         public static final int INSERT = 0;

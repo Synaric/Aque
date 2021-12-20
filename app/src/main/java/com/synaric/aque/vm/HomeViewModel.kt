@@ -28,25 +28,23 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
-    inner class ClickProxy {
-        fun saveNote() {
-            val note = Note()
-            note.title = "标题"
-            note.content = "内容" + if (noteList.value != null) noteList.value!!.size else "0"
-            note.category = "未分类"
-            note.createTime = Date().time
-            note.updateTime = note.createTime
+    fun saveNote() {
+        val note = Note()
+        note.title = "标题"
+        note.content = "内容" + if (noteList.value != null) noteList.value!!.size else "0"
+        note.category = "未分类"
+        note.createTime = Date().time
+        note.updateTime = note.createTime
 
-            launchUI {
-                noteRepository.insertNote(note)
-                val noteListValue: MutableList<Note>? = noteList.value as MutableList<Note>?
-                if (noteListValue != null) {
-                    noteListValue.add(0, note)
-                    noteList.setValue(
-                        noteListValue,
-                        PagingLiveData.NotifyDataSetChangedInfo.ofInsert(0)
-                    )
-                }
+        launchUI {
+            noteRepository.insertNote(note)
+            val noteListValue: MutableList<Note>? = noteList.value as MutableList<Note>?
+            if (noteListValue != null) {
+                noteListValue.add(0, note)
+                noteList.setValue(
+                    noteListValue,
+                    PagingLiveData.NotifyDataSetChangedInfo.ofInsert(0)
+                )
             }
         }
     }

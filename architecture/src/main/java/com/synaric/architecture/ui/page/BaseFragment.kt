@@ -25,6 +25,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 
 /**
@@ -84,5 +85,5 @@ abstract class BaseFragment : DataBindingFragment() {
     }
 
     protected val applicationContext: Context
-        protected get() = mActivity.applicationContext
+        get() = mActivity.applicationContext
 }
