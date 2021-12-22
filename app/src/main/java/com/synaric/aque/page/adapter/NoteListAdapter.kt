@@ -8,7 +8,7 @@ import com.synaric.aque.R
 import com.synaric.aque.data.entity.Note
 import com.synaric.aque.databinding.ItemNoteBinding
 
-class NoteListAAdapter(context: Context?) :
+class NoteListAdapter(context: Context?) :
     SimpleDataBindingAdapter<Note, ItemNoteBinding>(
         context,
         R.layout.item_note,

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 boolean showBottomNavigationView = controller.getBackStack().size() <= 2;
-                navView.setVisibility(showBottomNavigationView ? View.VISIBLE : View.GONE);
+//                navView.setVisibility(showBottomNavigationView ? View.VISIBLE : View.GONE);
             }
         });
     }

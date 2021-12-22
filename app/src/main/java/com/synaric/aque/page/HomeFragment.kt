@@ -5,7 +5,7 @@ import android.view.View
 import com.kunminx.architecture.ui.page.DataBindingConfig
 import com.synaric.aque.BR
 import com.synaric.aque.R
-import com.synaric.aque.page.adapter.NoteListAAdapter
+import com.synaric.aque.page.adapter.NoteListAdapter
 import com.synaric.aque.vm.HomeViewModel
 import com.synaric.architecture.ui.page.BaseFragment
 
@@ -15,14 +15,14 @@ import com.synaric.architecture.ui.page.BaseFragment
 class HomeFragment : BaseFragment() {
 
     private lateinit var state: HomeViewModel
-    private lateinit var adapter: NoteListAAdapter
+    private lateinit var adapter: NoteListAdapter
 
     override fun initViewModel() {
         state = getFragmentScopeViewModel(HomeViewModel::class.java)
     }
 
     override fun getDataBindingConfig(): DataBindingConfig {
-        adapter = NoteListAAdapter(context)
+        adapter = NoteListAdapter(context)
         adapter.setOnItemClickListener(state.OnNoteListItemClick())
         return DataBindingConfig(R.layout.fragment_home, BR.vm, state)
             .addBindingParam(BR.click, ClickProxy())
@@ -43,8 +43,8 @@ class HomeFragment : BaseFragment() {
 
     inner class ClickProxy {
         fun saveNote() {
-//            state.saveNote()
-            nav().navigate(R.id.action_fragment_home_to_fragment_note_detail)
+            state.saveNote()
+//            nav().navigate(R.id.fragment_note_detail)
         }
     }
 }
