@@ -132,4 +132,20 @@ class GenericParadigm {
         // 例如out T和? extends T、 in T和? super T是一个意思
         // 协变逆变和点变型不是一个意思
     }
+
+    fun test5() {
+        val arg: String? = null
+
+        fun doTest(arg: String?) {
+            val let1 = arg.let { "hello" }  // hello
+            val let2 = arg?.let { "hello" }     // null
+            val let3 = arg?.let { "hello" } ?: run {
+                "hello run"
+            }      // hello run
+            println(let1)
+            println(let2)
+            println(let3)
+        }
+        doTest(arg)
+    }
 }

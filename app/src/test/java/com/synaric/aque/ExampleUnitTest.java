@@ -1,7 +1,7 @@
 package com.synaric.aque;
 
 
-import com.synaric.aque.test.ClassAndInterface;
+import com.synaric.aque.test.GenericParadigm;
 import com.synaric.aque.test.TypeSystem;
 
 import org.junit.Test;
@@ -16,8 +16,8 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
-        TypeSystem typeSystem = new TypeSystem();
-        typeSystem.testProxy();
+        GenericParadigm genericParadigm = new GenericParadigm();
+        genericParadigm.test5();
         assertEquals(4, 2 + 2);
     }
 }
